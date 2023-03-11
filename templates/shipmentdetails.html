@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shipment Tracking</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+      }
+      h1 {
+        font-size: 24px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .shipment {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      .shipment h2 {
+        font-size: 18px;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+      .shipment .row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .shipment .row label {
+        width: 150px;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .shipment .row p {
+        margin: 0;
+      }
+      .shipment .row a {
+        color: #0066cc;
+        text-decoration: none;
+      }
+      .shipment .events {
+        margin-top: 20px;
+      }
+      .shipment .events table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .shipment .events table th {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+        background-color: #f7f7f7;
+      }
+      .shipment .events table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+
+      }
+
+      .error {
+  font-size: 50px;
+  color: red;
+  font-weight: bold;
+}
+
+    </style>
+  </head>
+  <body>
+    <div class="shipment">
+      <h2>Shipment ID: {{ shipments.0.id }}</h2>
+        {% if error_msg %}
+          <p class="error">{{ error_msg }}</p>
+          {% endif %}
+      <div class="row">
+        <label>Service:</label>
+        <p>{{ shipments.0.service }}</p>
+      </div>
+      <div class="row">
+        <label>Origin:</label>
+        <p>{{ shipments.0.origin.address.addressLocality }}</p>
+        <a href="{{ shipments.0.origin.servicePoint.url }}" target="_blank">{{ shipments.0.origin.servicePoint.label }}</a>
+      </div>
+      <div class="row">
+        <label>Destination:</label>
+        <p>{{ shipments.0.destination.address.addressLocality }}</p>
+        <a href="{{ shipments.0.destination.servicePoint.url }}" target="_blank">{{ shipments.0.destination.servicePoint.label }}</a>
+      </div>
+      <div class="row">
+        <label>Status:</label>
+        <p>{{ shipments.0.status.description }}</p>
+      </div>
+      <div class="row">
+        <label>Timestamp:</label>
+        <p>{{ shipments.0.status.timestamp }}</p>
+      </div>
+      <div class="row">
+        <label>Location:</label>
+        <p>{{ shipments.0.status.location.address.addressLocality }}</p>
+      </div>
+      <div class="row">
+        <label>Events:</label>
+        <div class="events">
+          <table>
+            <tr>
+              <th>Timestamp</th>
+              <th>Location</th>
+              <th>Description</th>
+            </tr>
+            {% for event in shipments.0.events %}
+            <tr>
+              <td>{{ event.timestamp }}</td>
+              <td>{{ event.location.address.addressLocality }}</td>
+              <td>{{ event.description }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+
+        </div>
+      </div>
