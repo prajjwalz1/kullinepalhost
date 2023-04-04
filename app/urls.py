@@ -7,12 +7,12 @@ from django.urls import  re_path
 # app_name = 'app'
 urlpatterns = [
     path('', views.home, name='home'),
-    path('/about',views.about, name="about"),
+    path('about',views.about, name="about"),
     path('track/' , views.track_shipment, name='track'),
-    path('/services', views.services, name='services'),
-    path('/blog', views.blog, name='blog'),
-    path('/contact', views.contact, name='contact'),
-    path('/getrates', views.dhl_rates_view, name='dhl_rates_view')
+    path('services/', views.services, name='services'),
+    path('blog/', views.blog, name='blog'),
+    path('contact/', views.contact, name='contact'),
+    path('getrates/', views.dhl_rates_view, name='dhl_rates_view')
 
 
 
