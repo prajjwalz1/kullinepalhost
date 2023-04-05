@@ -1,0 +1,6 @@
+# created by virtualenv automatically
+
+*.sqlite3
+*.db
+*.db.sqlite3
+/media/
