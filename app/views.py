@@ -1,8 +1,15 @@
 from django.http import HttpResponse
 import requests
+from .models import service,testimony,about_company,Our_team
 
 def home(request):
-    return render(request,'index.html')
+    services=service.objects.all()
+    testimonies=testimony.objects.all()
+    about=about_company.objects.all()
+    team=Our_team.objects.all()
+
+
+    return render(request,'index.html',{'service':services,'testimony':testimonies,'about':about,'team':team})
 
 
 from django.shortcuts import render

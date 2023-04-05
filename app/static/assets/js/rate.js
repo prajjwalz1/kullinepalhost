@@ -259,11 +259,15 @@ window.addEventListener('load', function() {
 
 
 
-
-const countryInput = document.querySelector('#country');
-const weightInput = document.querySelector('#weight');
+//
+//const countryInput = document.querySelector('.form-control');
+//const weightInput = document.querySelector('#weight');
 
 const calculateButton = document.querySelector('#calculate');
+
+const countryInput = document.querySelector('.form-control');
+const weightInput = document.querySelector('#weight');
+const datalist = document.querySelector('#autocomplete-dropdown');
 
 function filterCountries(query) {
   return countries.filter(country => {
@@ -274,17 +278,15 @@ function filterCountries(query) {
 
 function renderAutocompleteOptions(options) {
   const optionElements = options.slice(0, 3).map(option => {
-    const element = document.createElement("li");
     const formattedName = option.name.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
-    element.textContent = formattedName;
+    const element = document.createElement("option");
+    element.value = formattedName;
     element.dataset.code = option.code;
-    element.addEventListener("click", handleAutocompleteClick);
     return element;
   });
 
-  const autocompleteDropdown = document.getElementById("autocomplete-dropdown");
-  autocompleteDropdown.innerHTML = "";
-  optionElements.forEach(option => autocompleteDropdown.appendChild(option));
+  datalist.innerHTML = "";
+  optionElements.forEach(option => datalist.appendChild(option));
 }
 
 function handleCountryInput(event) {
@@ -293,19 +295,19 @@ function handleCountryInput(event) {
     const matchingCountries = filterCountries(query);
     renderAutocompleteOptions(matchingCountries);
   } else {
-    const autocompleteDropdown = document.getElementById("autocomplete-dropdown");
-    autocompleteDropdown.innerHTML = "";
+    datalist.innerHTML = "";
   }
 }
 
 function handleAutocompleteClick(event) {
-  if (event.target.tagName === "LI") {
+  if (event.target.tagName === "option") {
+    console.log("country clicked");
     const selectedCountry = event.target.textContent;
     const selectedCode = event.target.dataset.code;
     countryInput.value = selectedCountry;
     countryselect=selectedCountry;
     countryInput.dataset.code = selectedCode;
-    renderAutocompleteOptions([]);
+    datalist.innerHTML = "";
   }
 }
 
@@ -315,6 +317,8 @@ function calculateRate(code, weight) {
 }
 
 countryInput.addEventListener("input", handleCountryInput);
+countryInput.addEventListener("change", handleAutocompleteClick);
+
 //document.addEventListener("click", handleAutocompleteClick);
 
 
