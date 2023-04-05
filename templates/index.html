@@ -103,58 +103,27 @@
 </div>
 <!-- our info End -->
 <!--? Categories Area Start -->
-<div class="categories-area section-padding30">
+<div class="categories-area section-padding30" style="background-color:#738DA4;">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <!-- Section Tittle -->
                 <div class="section-tittle text-center mb-80">
-                    <span>Our Services</span>
-                    <h2>What We Can Do For You</h2>
+
+                    <br><h2>Our Services</h2>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="single-cat text-center mb-50">
-                    <div class="cat-icon">
-                        <span class="flaticon-shipped"></span>
-                    </div>
-                    <div class="cat-cap">
-                        <h5><a href="services.html">Land Transport</a></h5>
-                        <p class="paragraph"> we offer a range of land transport solutions to meet your shipping
-                            needs.</p>
-                        <br>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="single-cat text-center mb-50">
-                    <div class="cat-icon">
-                        <span class="flaticon-ship"></span>
-                    </div>
-                    <div class="cat-cap">
-                        <h5><a href="services.html">Last-mile delivery</a></h5>
-                        <p class="paragraph"> we understand the importance of last-mile delivery and the impact it has
-                            on our client's business.
-                            Our advanced technology and logistics expertise enable us to provide fast and reliable
-                            last-mile delivery services.
-                        </p>
-
-                    </div>
-
-                </div>
-            </div>
             {% for service in service %}
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="single-cat text-center mb-50">
                     <div class="cat-icon">
-                        <span class="{{service.service_icon}}"></span>
+                        <span style="color:#1C165C" class="{{service.service_icon}}"></span>
                     </div>
                     <div class="cat-cap">
                         <h5><a href="services.html">{{service.service_name}}</a></h5>
-                        <p> {{service.service_description}} </p>
+                        <p style="color:#1C165C"> {{service.service_description}} </p>
                     </div>
                 </div>
             </div>
@@ -166,7 +135,7 @@
 <!--? About Area Start -->
 <div class="about-low-area padding-bottom">
     <div class="section-tittle mb-35">
-                        <span style="text-align:center;" ><h2>About Our Company</h2></span>
+                        <span style="text-align:center;" > <br><br><h2>About Our Company</h2></span>
                         <h2>{{about.title}}</h2><br><br>
                     </div>
     {%for about in about%}
@@ -201,22 +170,20 @@
 </div>
 <!-- About Area End -->
 <!--? contact-form start -->
-<section class="contact-form-area section-bg  pt-115 pb-120 fix" data-background=""
-         {%static 'assets/img/gallery/section_bg02.jpg' %}">
-<div class="container">
+<section class="contact-form-area section-bg  pt-115 pb-120 fix" style="background-color:#738DA4;" >
+<div id="myDiv" class="container" >
     <div class="row justify-content-center">
         <!-- Contact wrapper -->
         <div class="col-xl-8 col-lg-9">
-            <div class="contact-form-wrapper">
+            <div class="contact-form-wrapper" >
                 <!-- From tittle -->
-                <div class="row">
+                <div   class="row" style="padding-top:0px;">
                     <div class="col-lg-12">
                         <!-- Section Tittle -->
-                        <div class="section-tittle mb-50">
+                        <div   class="section-tittle mb-50">
                             <span>Get a Qote For Free</span>
                             <h2>Request a Free Quote</h2>
-                            <p>Brook presents your services with flexible, convenient and cdpose layouts. You can select
-                                your favorite layouts & elements for.</p>
+
                         </div>
                     </div>
                 </div>
@@ -225,7 +192,7 @@
 
                 <!-- form -->
                 <form  class="contact-form">
-                    <div class="row ">
+                    <div  class="row ">
                         <div class="col-lg-6 col-md-6">
                             <div class="input-form">
                                 <input type="text" placeholder="Name">
@@ -236,7 +203,7 @@
                                 <input type="text" placeholder="Email">
                             </div>
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-6 col-md-6">
                             <div class="input-form">
                                 <input type="text" placeholder="Contact Number">
                             </div>
@@ -260,11 +227,7 @@
                         </div>
 
 
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="input-form">
-                                <input type="text" placeholder="Incoterms">
-                            </div>
-                        </div>
+
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="input-form">
                                 <input type="text" id="weight" placeholder="Weight in gm">
@@ -313,46 +276,43 @@
 </section>
 <!-- contact-form end -->
 <!--Team Ara Start -->
-<div class="team-area section-padding30">
+<<div class="team-area">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="cl-xl-7 col-lg-8 col-md-10">
+            <div class="col-xl-7 col-lg-8 col-md-10">
                 <!-- Section Tittle -->
                 <div class="section-tittle text-center mb-70">
                     <span style="font-size:30px;">Our Team Members</span>
-
                 </div>
             </div>
         </div>
         <div class="row">
-
-            {%for team in team %}
-            <div class="col-lg-4 col-md-4 col-sm-6">
+            {% for team in team %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="single-team mb-30 text-center">
                     <div class="team-img">
-                        <img src="{{team.image.url}}" alt="">
+                        <img src="{{ team.image.url }}" style="border-radius: 30%;" alt="">
                         <div class="team-caption">
-                            <h3><a href="#">{{team.Name}}</a></h3>
-                            <p>{{team.Role}}</p>
+                            <h3><a href="#">{{ team.Name }}</a></h3>
+                            <p>{{ team.Role }}</p>
                             <!-- Blog Social -->
                             <div class="team-social">
                                 <ul>
-                                    <li><a href="{{team.fb}}"><i
-                                            class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="{{ team.fb }}"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fas fa-globe"></i></a></li>
-                                    <li><a href="{{team.linkedin}}"><i
-                                            class="fab fa-linkedin"></i></a></li>
+                                    <li><a href="{{ team.linkedin }}"><i class="fab fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {%endfor%}
-
+            {% endfor %}
         </div>
     </div>
+</div>
+
     <!-- Team Ara End -->
     <!--? Testimonial Start -->
     <div style="background-color:#0B1D35;" class="testimonial-area testimonial-padding section-bg" data-background=" {%static
